@@ -1,15 +1,14 @@
 const mailgun = require('mailgun-js');
 const dotenv = require('dotenv');
 
-dotenv.config();  // Loads .env variables
+dotenv.config();
 
 const DOMAIN = process.env.MAILGUN_DOMAIN;
 const mg = mailgun({ apiKey: process.env.MAILGUN_API_KEY, domain: DOMAIN });
 
-// Updated sendEmail function with correct 'from' email for Mailgun sandbox domain
 const sendEmail = (to, subject, text, html) => {
   const data = {
-    from: 'postmaster@sandbox739836cc694a4f40946a6e325750d279.mailgun.org',  // Sandbox 'from' email
+    from: 'postmaster@sandbox739836cc694a4f40946a6e325750d279.mailgun.org',
     to, 
     subject,
     text,
