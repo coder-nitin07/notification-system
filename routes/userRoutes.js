@@ -4,6 +4,7 @@ const sendEmail = require('../services/sendMail');
 const validator = require('validator');
 const router = express.Router();
 
+// Register the User
 router.post('/', async (req, res)=>{
     const { email } = req.body;
 
@@ -28,6 +29,7 @@ router.post('/', async (req, res)=>{
     res.status(201).json({ message: 'User created successfully', user: newUser });
 });
 
+// SUbscribe the User
 router.post('/subscribe', async (req, res)=>{
     const { email } = req.body;
 
@@ -58,6 +60,7 @@ router.post('/subscribe', async (req, res)=>{
     }
 });
 
+// Unsubscribe the User
 router.post('/unsubscribe', async (req, res)=>{
     const { email } = req.body;
 
@@ -88,6 +91,7 @@ router.post('/unsubscribe', async (req, res)=>{
     }
 });
 
+// Get the Users
 router.get('/', async (req, res)=>{ 
     try {
         const user = await User.find();
